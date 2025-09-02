@@ -18,16 +18,17 @@ export class NotesService {
     //     },
     // ];
     findAll() {
-        return this.databaseService.note.findMany();
+        return this.databaseService.note.findMany({
+            orderBy: {
+                createdAt: 'desc',
+            },
+        });
     }
 
     async create(note: Prisma.NoteCreateInput) {
-        //    const newNote = {
-        //         id: this.notes.length + 1,
-        //         ...note
-        //     }
-        //     this.notes.push(newNote);
-        //     return newNote;
+        if (!note.title) {
+            throw new NotFoundException('Title is required');
+        }
         return this.databaseService.note.create({ data: note });
     }
 }

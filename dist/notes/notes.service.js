@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NotesService = void 0;
 const common_1 = require("@nestjs/common");
+const common_2 = require("@nestjs/common");
 const database_service_1 = require("../database/database.service");
 let NotesService = class NotesService {
     databaseService;
@@ -18,9 +19,16 @@ let NotesService = class NotesService {
         this.databaseService = databaseService;
     }
     findAll() {
-        return this.databaseService.note.findMany();
+        return this.databaseService.note.findMany({
+            orderBy: {
+                createdAt: 'desc',
+            },
+        });
     }
     async create(note) {
+        if (!note.title) {
+            throw new common_2.NotFoundException('Title is required');
+        }
         return this.databaseService.note.create({ data: note });
     }
 };
