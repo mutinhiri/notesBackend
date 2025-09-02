@@ -1,5 +1,9 @@
+import { CreateNoteDto } from './create-note.dto';
 export declare class NotesService {
     private notes;
-    findAll(): string;
-    create(): string;
+    findAll(): {
+        id: number;
+        title: string;
+    }[];
+    create(note: CreateNoteDto): string;
 }

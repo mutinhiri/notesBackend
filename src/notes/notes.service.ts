@@ -15,10 +15,15 @@ export class NotesService {
         },
     ];
     findAll() {
-        return 'This action returns all notes';
+        return this.notes;
     }
 
-    create() {
+    create(note: CreateNoteDto) {
+       const newNote = {
+            id: this.notes.length + 1,
+            ...note
+        }
+        this.notes.push(newNote);
         return 'This action adds a new note';
     }
 }

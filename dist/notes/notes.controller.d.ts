@@ -3,6 +3,9 @@ import { NotesService } from './notes.service';
 export declare class NotesController {
     private notesService;
     constructor(notesService: NotesService);
-    findAll(): string;
+    findAll(): {
+        id: number;
+        title: string;
+    }[];
     create(note: CreateNoteDto): string;
 }
