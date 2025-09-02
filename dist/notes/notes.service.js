@@ -9,6 +9,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NotesService = void 0;
 const common_1 = require("@nestjs/common");
 let NotesService = class NotesService {
+    findAll() {
+        return 'This action returns all notes';
+    }
+    create() {
+        return 'This action adds a new note';
+    }
 };
 exports.NotesService = NotesService;
 exports.NotesService = NotesService = __decorate([
