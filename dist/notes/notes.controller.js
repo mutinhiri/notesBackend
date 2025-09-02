@@ -25,7 +25,8 @@ let NotesController = class NotesController {
         return this.notesService.findAll();
     }
     create(note) {
-        return this.notesService.create(note);
+        const prismaInput = { title: note.title };
+        return this.notesService.create(prismaInput);
     }
 };
 exports.NotesController = NotesController;

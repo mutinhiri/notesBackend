@@ -5,34 +5,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NotesService = void 0;
 const common_1 = require("@nestjs/common");
+const database_service_1 = require("../database/database.service");
 let NotesService = class NotesService {
-    notes = [
-        {
-            id: 1,
-            title: 'First note',
-        },
-        {
-            id: 2,
-            title: 'Second note',
-        },
-    ];
-    findAll() {
-        return this.notes;
+    databaseService;
+    constructor(databaseService) {
+        this.databaseService = databaseService;
     }
-    create(note) {
-        const newNote = {
-            id: this.notes.length + 1,
-            ...note
-        };
-        this.notes.push(newNote);
-        return newNote;
+    findAll() {
+        return this.databaseService.note.findMany();
+    }
+    async create(note) {
+        return this.databaseService.note.create({ data: note });
     }
 };
 exports.NotesService = NotesService;
 exports.NotesService = NotesService = __decorate([
-    (0, common_1.Injectable)()
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [database_service_1.DatabaseService])
 ], NotesService);
 //# sourceMappingURL=notes.service.js.map

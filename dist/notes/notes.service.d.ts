@@ -1,12 +1,16 @@
-import { CreateNoteDto } from './create-note.dto';
+import { Prisma } from '@prisma/client';
+import { DatabaseService } from 'src/database/database.service';
 export declare class NotesService {
-    private notes;
-    findAll(): {
+    private databaseService;
+    constructor(databaseService: DatabaseService);
+    findAll(): Prisma.PrismaPromise<{
         id: number;
         title: string;
-    }[];
-    create(note: CreateNoteDto): {
-        title: string;
+        createdAt: Date;
+    }[]>;
+    create(note: Prisma.NoteCreateInput): Promise<{
         id: number;
-    };
+        title: string;
+        createdAt: Date;
+    }>;
 }
