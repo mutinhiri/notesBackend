@@ -7,5 +7,8 @@ export declare class NotesController {
         id: number;
         title: string;
     }[];
-    create(note: CreateNoteDto): string;
+    create(note: CreateNoteDto): {
+        title: string;
+        id: number;
+    };
 }

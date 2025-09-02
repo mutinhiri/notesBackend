@@ -28,7 +28,7 @@ let NotesService = class NotesService {
             ...note
         };
         this.notes.push(newNote);
-        return 'This action adds a new note';
+        return newNote;
     }
 };
 exports.NotesService = NotesService;

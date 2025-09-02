@@ -5,5 +5,8 @@ export declare class NotesService {
         id: number;
         title: string;
     }[];
-    create(note: CreateNoteDto): string;
+    create(note: CreateNoteDto): {
+        title: string;
+        id: number;
+    };
 }
