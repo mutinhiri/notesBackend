@@ -1,4 +1,4 @@
-import { Body, Controller, Get,Post } from '@nestjs/common';
+import { Body, Controller, Get,Post, ValidationPipe } from '@nestjs/common';
 import { CreateNoteDto } from './create-note.dto';
 import { NotesService } from './notes.service';
 
@@ -12,7 +12,7 @@ export class NotesController {
     }
 
     @Post()
-    create(@Body() note: CreateNoteDto) {
+    create(@Body(ValidationPipe) note: CreateNoteDto) {
         return this.notesService.create(note);
     }
 }

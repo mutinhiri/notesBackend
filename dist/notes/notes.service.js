@@ -9,6 +9,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NotesService = void 0;
 const common_1 = require("@nestjs/common");
 let NotesService = class NotesService {
+    notes = [
+        {
+            id: 1,
+            title: 'First note',
+        },
+        {
+            id: 2,
+            title: 'Second note',
+        },
+    ];
     findAll() {
         return 'This action returns all notes';
     }
