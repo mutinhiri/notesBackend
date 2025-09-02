@@ -14,12 +14,18 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NotesController = void 0;
 const common_1 = require("@nestjs/common");
+const create_note_dto_1 = require("./create-note.dto");
+const notes_service_1 = require("./notes.service");
 let NotesController = class NotesController {
-    findAll() {
-        return 'This action returns all notes';
+    notesService;
+    constructor(notesService) {
+        this.notesService = notesService;
     }
-    create(createNoteDto) {
-        return 'This action adds a new note';
+    findAll() {
+        return this.notesService.findAll();
+    }
+    create(note) {
+        return this.notesService.create(note);
     }
 };
 exports.NotesController = NotesController;
@@ -33,10 +39,11 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [create_note_dto_1.CreateNoteDto]),
     __metadata("design:returntype", void 0)
 ], NotesController.prototype, "create", null);
 exports.NotesController = NotesController = __decorate([
-    (0, common_1.Controller)('notes')
+    (0, common_1.Controller)('notes'),
+    __metadata("design:paramtypes", [notes_service_1.NotesService])
 ], NotesController);
 //# sourceMappingURL=notes.controller.js.map
